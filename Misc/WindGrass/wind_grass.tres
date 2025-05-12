@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=2]
+
+[ext_resource path="res://Misc/WindGrass/wind_grass.shader" type="Shader" id=1]
+[ext_resource path="res://Misc/WindGrass/noise.tres" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.0170576, 0.173828, 0.0100189, 1, 0.0278278, 0.603516, 0.151511, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/wind_speed = 0.2
+shader_param/wind_strength = 4.0
+shader_param/wind_texture_tile_size = 20.0
+shader_param/wind_vertical_strength = 0.3
+shader_param/wind_horizontal_direction = Vector2( 1, 0.5 )
+shader_param/character_position = null
+shader_param/character_radius = 3.0
+shader_param/character_push_strength = 1.0
+shader_param/player_pos = Vector3( 0, 0, 0 )
+shader_param/interact_power = 0.5
+shader_param/radius = 2.0
+shader_param/color_ramp = SubResource( 2 )
+shader_param/wind_noise = ExtResource( 2 )

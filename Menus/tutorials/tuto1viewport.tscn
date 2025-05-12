@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/mouse.png" type="Texture" id=1]
+[ext_resource path="res://Menus/tutorials/mouseCircle.gd" type="Script" id=3]
+[ext_resource path="res://Menus/bichosMenu/PinkBlobMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/particles/circle_02.png" type="Texture" id=5]
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id=9]
+material = SubResource( 8 )
+
+[sub_resource type="Curve" id=13]
+_data = [ Vector2( 0, 0.788344 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.131902 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=12]
+offsets = PoolRealArray( 0.00746269, 1 )
+colors = PoolColorArray( 0.00431004, 0.171063, 0.99707, 1, 0.597983, 0.943466, 1, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="PinkBlob" parent="." instance=ExtResource( 4 )]
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1, 4.45198 )
+axis = 1
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="CPUParticles" type="CPUParticles" parent="Sprite3D2"]
+transform = Transform( 1, 2.13163e-14, -4.65868e-21, -2.13163e-14, 1, -1.06581e-14, -4.23516e-21, 1.06581e-14, 1, -0.5, 0, -1 )
+cast_shadow = 0
+amount = 25
+local_coords = false
+mesh = SubResource( 9 )
+direction = Vector3( 0, 0, -1 )
+spread = 90.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 5.0
+scale_amount_curve = SubResource( 13 )
+color_ramp = SubResource( 12 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.999962, 0.00872768, 3.81499e-10, 0, -4.37114e-08, 1, 0.00872768, -0.999962, -4.37097e-08, -0.044754, 10.1223, 0.318684 )
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform( 3, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0 )
+modulate = Color( 1, 1, 1, 0.129412 )
+axis = 1
+texture = ExtResource( 5 )

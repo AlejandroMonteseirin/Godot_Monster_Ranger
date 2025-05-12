@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/exclamation.svg" type="Texture" id=1]
+
+[sub_resource type="SpatialMaterial" id=27]
+flags_transparent = true
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=28]
+material = SubResource( 27 )
+
+[sub_resource type="Curve" id=26]
+_data = [ Vector2( 0.0144766, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="warning" type="CPUParticles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+emitting = false
+amount = 1
+one_shot = true
+local_coords = false
+mesh = SubResource( 28 )
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 2, -5 )
+scale_amount = 3.0
+scale_amount_curve = SubResource( 26 )

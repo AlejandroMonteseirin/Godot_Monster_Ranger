@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://instancias/sol/sol.gd" type="Script" id=1]
+
+[node name="DirectionalLight" type="DirectionalLight"]
+transform = Transform( 0.5, -0.784886, 0.365998, 0, 0.422618, 0.906308, -0.866025, -0.453154, 0.211309, 0, 0, 0 )
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.689
+directional_shadow_split_2 = 0.288
+directional_shadow_normal_bias = 0.0
+script = ExtResource( 1 )

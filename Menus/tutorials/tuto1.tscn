@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Menus/tutorials/popUp.gd" type="Script" id=1]
+[ext_resource path="res://Menus/fuente.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Menus/tutorials/tuto1viewport.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Menus/SpicyRiceFont.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.192157, 0.329412, 0.635294, 0.223529 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.239216, 0.239216, 0.513726, 0.776471 )
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=6]
+size = 60
+outline_size = 8
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=4]
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.305882, 1, 0, 0.458824 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Node2D" type="PopupDialog"]
+visible = true
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.95
+theme = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
+popup_exclusive = true
+script = ExtResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="ViewportContainer" type="ViewportContainer" parent="HBoxContainer"]
+margin_right = 1014.0
+margin_bottom = 674.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="HBoxContainer/ViewportContainer"]
+size = Vector2( 1014, 674 )
+handle_input_locally = false
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Spatial" parent="HBoxContainer/ViewportContainer/Viewport" instance=ExtResource( 3 )]
+
+[node name="Label" type="Label" parent="HBoxContainer/ViewportContainer"]
+margin_left = 102.4
+margin_top = 64.8
+margin_right = 677.4
+margin_bottom = 148.8
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 6 )
+text = "Do  Circles  To  Capture"
+align = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/ViewportContainer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = SubResource( 4 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = SubResource( 5 )
+text = "Start!"
+
+[connection signal="pressed" from="HBoxContainer/ViewportContainer/Button" to="." method="_on_Button_pressed"]
